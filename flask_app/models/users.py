@@ -1,5 +1,5 @@
 # import the function that will return an instance of a connection
-from mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the friend table from our database
 class User:
     def __init__( self , data ):
@@ -49,16 +49,3 @@ class User:
     def destroy(cls, data):
         query = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL('users_schema').query_db(query,data)
-
-    # @classmethod
-    # def show_user(cls, data):
-    #     query= "SELECT * FROM users WHERE id = %(id)s;"
-    #     output = connectToMySQL('users').query_db(query, data) #returns a list
-    #     return cls(output[0])
-
-
-    # @classmethod
-    # def delete_user(cls, data):
-    #     query = "DELETE FROM users WHERE id = %(id)s;"
-    #     output = connectToMySQL('users').query_db(query, data)
-    #     return output
